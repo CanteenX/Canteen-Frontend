@@ -1,0 +1,206 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 228 30% 10%;
+    --foreground: 210 40% 98%;
+
+    --card: 228 30% 13%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 228 30% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 250 87% 77%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 228 22% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 228 22% 20%;
+    --muted-foreground: 215 20.2% 75.1%;
+
+    --accent: 250 85% 65%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 228 22% 18%;
+    --input: 228 22% 18%;
+    --ring: 250 85% 65%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 250 87% 67%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 250 85% 75%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 250 85% 65%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .glass-card {
+    @apply bg-card/90 backdrop-blur-md border border-border/50 shadow-lg;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary to-accent;
+  }
+
+  .purple-glow {
+    @apply relative z-10;
+  }
+  
+  .purple-glow::before {
+    content: '';
+    @apply absolute -inset-1 rounded-full bg-primary/80 blur-xl opacity-30 -z-10;
+  }
+
+  .gradient-border {
+    @apply relative border-0 p-[1px] bg-transparent;
+  }
+  
+  .gradient-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-[inherit] bg-gradient-to-r from-primary to-accent opacity-70 -z-10;
+  }
+  
+  .gradient-border-content {
+    @apply bg-card rounded-[inherit] p-4 h-full;
+  }
+
+  .animate-pulse-subtle {
+    animation: pulse-subtle 3s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-subtle {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+}
+
+.section-transition {
+  scroll-margin-top: 100px;
+}
+
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* Background gradient effect */
+.bg-grid {
+  background-image: 
+    linear-gradient(to right, rgba(98, 70, 234, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(98, 70, 234, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.bg-glow {
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  border-radius: 100%;
+  background: radial-gradient(circle, rgba(98, 70, 234, 0.3) 0%, rgba(98, 70, 234, 0) 70%);
+  filter: blur(60px);
+  z-index: -1;
+}
+
+/* Card element styles */
+.feature-card {
+  @apply border border-border/50 bg-card hover:border-primary/50 transition-all duration-300;
+}
+
+.feature-card:hover .feature-icon {
+  @apply text-primary;
+}
+
