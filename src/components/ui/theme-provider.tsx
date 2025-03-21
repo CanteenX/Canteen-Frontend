@@ -7,6 +7,8 @@ type ThemeProviderProps = {
   children: React.ReactNode
   defaultTheme?: Theme
   storageKey?: string
+  enableSystem?: boolean
+  disableTransitionOnChange?: boolean
 }
 
 type ThemeProviderState = {
@@ -25,6 +27,8 @@ export function ThemeProvider({
   children,
   defaultTheme = "dark",
   storageKey = "ui-theme",
+  enableSystem = true,
+  disableTransitionOnChange = false,
   ...props
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(
@@ -46,7 +50,14 @@ export function ThemeProvider({
     }
 
     root.classList.add(theme)
-  }, [theme])
+    
+    if (disableTransitionOnChange) {
+      root.classList.add("transition-none")
+      window.setTimeout(() => {
+        root.classList.remove("transition-none")
+      }, 0)
+    }
+  }, [theme, disableTransitionOnChange])
 
   const value = {
     theme,

@@ -1,3 +1,4 @@
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -17,6 +18,16 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  define: {
+    // Required for Next.js components like Link
+    "process.env": {
+      NODE_ENV: mode,
+      __NEXT_ROUTER_BASEPATH: "",
+      __NEXT_SCROLL_RESTORATION: false,
+      __NEXT_HAS_REWRITES: false,
+      __NEXT_I18N_SUPPORT: false,
     },
   },
 }));
