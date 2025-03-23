@@ -1,5 +1,6 @@
 import { Providers } from "@/components/providers"
 import { Inter } from "next/font/google"
+import { CustomCursor } from "@/components/ui/cursor"
 import "./globals.css"
 import { Metadata } from "next"
 
@@ -32,7 +33,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <CustomCursor />
+        </Providers>
       </body>
     </html>
   )
