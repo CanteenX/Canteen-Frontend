@@ -1,27 +1,19 @@
-"use client"
-
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { MotionDiv } from "@/components/ui/motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-const Hero = () => {
+export default function Hero() {
   return (
     <section className="pt-32 pb-24 overflow-hidden relative">
       {/* Background effects */}
       <div className="absolute inset-0 bg-grid opacity-[0.15] z-0"></div>
-      <div className="bg-glow top-20 left-1/4 animate-float"></div>
-      <div className="bg-glow bottom-20 right-1/4 animate-float" style={{ animationDelay: "-2s" }}></div>
+      <div className="bg-glow top-20 left-1/4"></div>
+      <div className="bg-glow bottom-20 right-1/4" style={{ animationDelay: "-2s" }}></div>
       
       <Container className="relative z-10">
         <div className="flex flex-col items-center text-center mb-16">
-          <MotionDiv
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-6"
-          >
+          <div className="mb-6">
             <Button
               variant="outline"
               className="rounded-full h-10 border-primary/20 bg-muted/30 text-primary gap-2 text-sm"
@@ -29,36 +21,21 @@ const Hero = () => {
               <Sparkles className="h-4 w-4" />
               <span>Canteen management reimagined</span>
             </Button>
-          </MotionDiv>
+          </div>
           
-          <MotionDiv
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
+          <div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight max-w-5xl">
               Transform your canteen <br className="hidden sm:block" />
               <span className="text-gradient">operations</span> with CanteenX
             </h1>
-          </MotionDiv>
+          </div>
           
-          <MotionDiv
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
-            <p className="text-xl text-muted-foreground max-w-2xl mb-8">
-              Streamline ordering, reduce queues, and gain valuable insights with our 
-              all-in-one canteen management solution.
-            </p>
-          </MotionDiv>
+          <p className="text-xl text-muted-foreground max-w-2xl mb-8">
+            Streamline ordering, reduce queues, and gain valuable insights with our 
+            all-in-one canteen management solution.
+          </p>
           
-          <MotionDiv
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4"
-          >
+          <div className="flex flex-col sm:flex-row gap-4">
             <Button 
               size="lg" 
               className="bg-gradient-to-r from-primary to-accent hover:opacity-90 shadow-lg px-8" 
@@ -72,16 +49,11 @@ const Hero = () => {
             <Button variant="outline" size="lg" className="border-primary/20 bg-muted/30 text-foreground">
               Book a demo
             </Button>
-          </MotionDiv>
+          </div>
         </div>
 
         {/* Dashboard Preview */}
-        <MotionDiv
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.0 }}
-          className="relative mx-auto max-w-5xl"
-        >
+        <div className="relative mx-auto max-w-5xl mt-16">
           <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur-xl opacity-70"></div>
           <div className="glass-card rounded-2xl border border-white/10 shadow-2xl overflow-hidden relative z-10">
             <div className="p-1">
@@ -160,10 +132,8 @@ const Hero = () => {
               </div>
             </div>
           </div>
-        </MotionDiv>
+        </div>
       </Container>
     </section>
   );
-};
-
-export default Hero;
+}
