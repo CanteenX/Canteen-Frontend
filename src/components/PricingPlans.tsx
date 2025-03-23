@@ -6,6 +6,7 @@ import { MotionDiv } from "@/components/ui/motion";
 import { Check } from "lucide-react";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 
 const plans = [
   {
@@ -137,8 +138,8 @@ const PricingPlans = () => {
               <p className="text-muted-foreground mb-4">
                 Contact our sales team to build a plan tailored to your specific requirements.
               </p>
-              <Button variant="outline" className="border-primary/30 bg-muted/30 hover:bg-muted/50">
-                Contact Sales
+              <Button variant="outline" className="border-primary/30 bg-muted/30 hover:bg-muted/50" asChild>
+                <Link href="/contact">Contact Sales</Link>
               </Button>
             </div>
           </div>
