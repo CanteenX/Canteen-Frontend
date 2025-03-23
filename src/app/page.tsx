@@ -18,10 +18,18 @@ export default function Home() {
         <div className="absolute inset-0 bg-grid opacity-[0.1] z-0 pointer-events-none"></div>
         <Navbar />
         <main>
-          <Hero />
-          <Features />
-          <PricingPlans />
-          <FAQ />
+          <section id="home" className="scroll-mt-20">
+            <Hero />
+          </section>
+          <section id="features" className="scroll-mt-20">
+            <Features />
+          </section>
+          <section id="pricing" className="scroll-mt-20">
+            <PricingPlans />
+          </section>
+          <section id="faq" className="scroll-mt-20">
+            <FAQ />
+          </section>
         </main>
         <Footer />
       </div>

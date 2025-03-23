@@ -4,13 +4,26 @@ import { useState } from 'react'
 import { Menu, X } from "lucide-react"
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
+import { useScrollTo } from '@/hooks/useScrollTo'
+import { usePathname } from 'next/navigation'
 
 interface NavbarClientProps {
-  navigation: { name: string; href: string }[]
+  navigation: { name: string; href: string; id?: string }[]
 }
 
 export function NavbarClient({ navigation }: NavbarClientProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const scrollTo = useScrollTo()
+  const pathname = usePathname()
+  const isHomePage = pathname === '/'
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id?: string) => {
+    if (isHomePage && id) {
+      e.preventDefault()
+      scrollTo(id)
+    }
+    setMobileMenuOpen(false)
+  }
 
   return (
     <>
@@ -47,7 +60,7 @@ export function NavbarClient({ navigation }: NavbarClientProps) {
                       key={item.name}
                       href={item.href}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-foreground hover:bg-muted"
-                      onClick={() => setMobileMenuOpen(false)}
+                      onClick={(e) => handleClick(e, item.id)}
                     >
                       {item.name}
                     </Link>
