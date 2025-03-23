@@ -1,5 +1,7 @@
+"use client"
 
-import { createContext, useContext, useEffect, useState } from "react"
+import * as React from "react"
+import { useEffect, useState } from "react"
 
 type Theme = "dark" | "light" | "system"
 
@@ -7,8 +9,6 @@ type ThemeProviderProps = {
   children: React.ReactNode
   defaultTheme?: Theme
   storageKey?: string
-  enableSystem?: boolean
-  disableTransitionOnChange?: boolean
 }
 
 type ThemeProviderState = {
@@ -21,19 +21,22 @@ const initialState: ThemeProviderState = {
   setTheme: () => null,
 }
 
-const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
+const ThemeProviderContext = React.createContext<ThemeProviderState>(initialState)
 
 export function ThemeProvider({
   children,
   defaultTheme = "dark",
   storageKey = "ui-theme",
-  enableSystem = true,
-  disableTransitionOnChange = false,
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
-  )
+  const [theme, setTheme] = useState<Theme>(defaultTheme)
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem(storageKey) as Theme
+    if (savedTheme) {
+      setTheme(savedTheme)
+    }
+  }, [storageKey])
 
   useEffect(() => {
     const root = window.document.documentElement
@@ -50,14 +53,7 @@ export function ThemeProvider({
     }
 
     root.classList.add(theme)
-    
-    if (disableTransitionOnChange) {
-      root.classList.add("transition-none")
-      window.setTimeout(() => {
-        root.classList.remove("transition-none")
-      }, 0)
-    }
-  }, [theme, disableTransitionOnChange])
+  }, [theme])
 
   const value = {
     theme,
@@ -75,7 +71,7 @@ export function ThemeProvider({
 }
 
 export const useTheme = () => {
-  const context = useContext(ThemeProviderContext)
+  const context = React.useContext(ThemeProviderContext)
 
   if (context === undefined)
     throw new Error("useTheme must be used within a ThemeProvider")

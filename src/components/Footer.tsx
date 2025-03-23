@@ -1,7 +1,8 @@
+"use client"
 
 import { Container } from "@/components/ui/container";
 import { MotionDiv } from "@/components/ui/motion";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -83,7 +84,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <Link to="/contact" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
+                <Link href="/contact" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                   Contact
                 </Link>
               </li>

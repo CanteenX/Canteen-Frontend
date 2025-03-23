@@ -1,3 +1,4 @@
+"use client"
 
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
@@ -6,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";
 import { Eye, EyeOff, Lock, Mail, ArrowLeft } from "lucide-react";
 import { MotionDiv } from "@/components/ui/motion";
@@ -38,7 +39,7 @@ const Login = () => {
           className="w-full max-w-md p-8 rounded-xl border border-white/10 bg-card/30 backdrop-blur-sm shadow-lg"
         >
           <div className="mb-6">
-            <Link to="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground">
+            <Link href="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to home
             </Link>
@@ -133,7 +134,7 @@ const Login = () => {
             
             <div className="text-center text-sm text-muted-foreground">
               Don't have an account?{" "}
-              <Link to="/signup" className="text-primary hover:underline">
+              <Link href="/signup" className="text-primary hover:underline">
                 Sign up
               </Link>
             </div>

@@ -1,3 +1,4 @@
+"use client"
 
 import { Container } from "@/components/ui/container";
 import { MotionDiv } from "@/components/ui/motion";

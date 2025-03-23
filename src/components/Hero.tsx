@@ -1,9 +1,10 @@
+"use client"
 
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { MotionDiv } from "@/components/ui/motion";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -63,7 +64,7 @@ const Hero = () => {
               className="bg-gradient-to-r from-primary to-accent hover:opacity-90 shadow-lg px-8" 
               asChild
             >
-              <Link to="/">
+              <Link href="/">
                 Start free trial
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>

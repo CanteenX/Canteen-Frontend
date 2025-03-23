@@ -1,6 +1,6 @@
-
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
+import PricingPlans from "@/components/PricingPlans";
 import FAQ from "@/components/FAQ";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -15,6 +15,7 @@ export default function Home() {
         <main>
           <Hero />
           <Features />
+          <PricingPlans />
           <FAQ />
         </main>
         <Footer />
