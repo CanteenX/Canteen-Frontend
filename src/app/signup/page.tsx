@@ -1,5 +1,9 @@
 import { Metadata } from 'next'
-import SignUp from "@/components/SignUp"
+import dynamic from 'next/dynamic'
+
+const SignUpComponent = dynamic(() => import('@/components/SignUp/SignUpComponent'), {
+  ssr: true
+})
 
 export const metadata: Metadata = {
   title: "Sign Up - CanteenX",
@@ -7,5 +11,5 @@ export const metadata: Metadata = {
 }
 
 export default function SignUpPage() {
-  return <SignUp />
+  return <SignUpComponent />
 }
