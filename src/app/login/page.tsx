@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import Login from "@/components/Login"
+import LoginComponent from "@/components/Login"
 
 export const metadata: Metadata = {
   title: "Login - CanteenX",
@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 }
 
 export default function LoginPage() {
-  return <Login />
+  return <LoginComponent />
 }

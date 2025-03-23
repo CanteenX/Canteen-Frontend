@@ -1,12 +1,16 @@
+'use client'
+
 import { Container } from "@/components/ui/container"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
+import Navbar from "@/components/Navbar"
 
-export default function Login() {
+export default function LoginComponent() {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Container className="flex-1 flex items-center justify-center py-12">
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <Container className="flex-1 flex items-center justify-center py-24">
         <div className="bg-card/50 p-8 rounded-2xl border border-border/50 w-full max-w-md">
           <div className="text-center mb-8">
             <h1 className="text-2xl font-bold">Welcome back</h1>
