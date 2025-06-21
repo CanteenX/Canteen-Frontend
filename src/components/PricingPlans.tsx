@@ -11,7 +11,7 @@ import Link from "next/link";
 const plans = [
   {
     name: "Starter",
-    price: { monthly: 29, annually: 290 },
+    price: { monthly: 290, annually: 2900 },
     description: "Perfect for individuals and small teams.",
     features: [
       "Up to 5 team members",
@@ -24,7 +24,7 @@ const plans = [
   },
   {
     name: "Professional",
-    price: { monthly: 79, annually: 790 },
+    price: { monthly: 790, annually: 7900 },
     description: "Ideal for growing businesses and teams.",
     features: [
       "Up to 15 team members",
@@ -39,7 +39,7 @@ const plans = [
   },
   {
     name: "Enterprise",
-    price: { monthly: 199, annually: 1990 },
+    price: { monthly: 1990, annually: 19900 },
     description: "For large organizations with complex needs.",
     features: [
       "Unlimited team members",
@@ -185,7 +185,7 @@ const PlanCard = ({ name, price, description, features, popular, billingCycle, i
           
           <div className="mb-6 space-y-2">
             <div className="flex items-baseline">
-              <span className="text-4xl font-bold">${price}</span>
+              <span className="text-4xl font-bold">₹{price}</span>
               <span className="text-muted-foreground ml-2">/{billingCycle === 'monthly' ? 'month' : 'year'}</span>
             </div>
             {billingCycle === 'annually' && (

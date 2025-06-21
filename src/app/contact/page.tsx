@@ -59,7 +59,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-medium">Our Location</h3>
-                      <p className="text-muted-foreground">123 Innovation Drive, Tech Park, Bangalore 560103</p>
+                      <p className="text-muted-foreground">Vadodara, Gujarat, India</p>
                     </div>
                   </div>
                   
