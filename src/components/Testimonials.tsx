@@ -1,7 +1,7 @@
 "use client"
 
 import { Container } from "@/components/ui/container";
-import { MotionDiv, containerVariants, fadeIn, itemVariants } from "@/components/ui/motion";
+import { MotionDiv } from "@/components/ui/motion";
 import { Star } from "lucide-react";
 import { Variants } from "framer-motion";
 
@@ -27,6 +27,28 @@ const testimonialItemVariants: Variants = {
       ease: [0.4, 0, 0.2, 1],
     },
   },
+};
+
+// Custom fadeIn function with proper typing
+const createFadeIn = (delay: number = 0, direction: string = "up"): Variants => {
+  return {
+    hidden: {
+      y: direction === "up" ? 40 : direction === "down" ? -40 : 0,
+      x: direction === "left" ? 40 : direction === "right" ? -40 : 0,
+      opacity: 0,
+    },
+    show: {
+      y: 0,
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: "tween",
+        duration: 0.6,
+        delay,
+        ease: [0.25, 0.25, 0.25, 0.75],
+      },
+    },
+  };
 };
 
 const testimonials = [
@@ -97,7 +119,7 @@ const Testimonials = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
-          variants={fadeIn(0.4)}
+          variants={createFadeIn(0.4)}
           className="mt-16 flex flex-wrap justify-center gap-8"
         >
           {['Company A', 'Company B', 'Company C', 'Company D', 'Company E'].map((company, index) => (
