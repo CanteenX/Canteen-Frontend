@@ -3,6 +3,31 @@
 import { Container } from "@/components/ui/container";
 import { MotionDiv, containerVariants, fadeIn, itemVariants } from "@/components/ui/motion";
 import { Star } from "lucide-react";
+import { Variants } from "framer-motion";
+
+// Define proper types for variants
+const testimonialContainerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const testimonialItemVariants: Variants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: [0.4, 0, 0.2, 1],
+    },
+  },
+};
 
 const testimonials = [
   {
@@ -35,15 +60,15 @@ const Testimonials = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          variants={containerVariants}
+          variants={testimonialContainerVariants}
           className="text-center max-w-3xl mx-auto mb-16 space-y-4"
         >
-          <MotionDiv variants={itemVariants}>
+          <MotionDiv variants={testimonialItemVariants}>
             <h2 className="text-3xl md:text-4xl font-bold">
               Trusted by Businesses Worldwide
             </h2>
           </MotionDiv>
-          <MotionDiv variants={itemVariants}>
+          <MotionDiv variants={testimonialItemVariants}>
             <p className="text-muted-foreground text-lg">
               Don't just take our word for it. Here's what our customers have to say about their experience.
             </p>
@@ -54,7 +79,7 @@ const Testimonials = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          variants={containerVariants}
+          variants={testimonialContainerVariants}
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
         >
           {testimonials.map((testimonial, index) => (
@@ -99,7 +124,7 @@ const TestimonialCard = ({ quote, author, position, index, visible = true }: Tes
   
   return (
     <MotionDiv
-      variants={itemVariants}
+      variants={testimonialItemVariants}
       className="bg-white rounded-xl p-6 shadow-sm border"
     >
       <div className="flex mb-4">
