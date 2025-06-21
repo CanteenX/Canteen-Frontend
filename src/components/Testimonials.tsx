@@ -91,9 +91,12 @@ interface TestimonialCardProps {
   author: string;
   position: string;
   index: number;
+  visible?: boolean;
 }
 
-const TestimonialCard = ({ quote, author, position, index }: TestimonialCardProps) => {
+const TestimonialCard = ({ quote, author, position, index, visible = true }: TestimonialCardProps) => {
+  if (!visible) return null;
+  
   return (
     <MotionDiv
       variants={itemVariants}
