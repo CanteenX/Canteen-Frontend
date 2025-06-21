@@ -1,8 +1,13 @@
 'use client'
 
 import { motion } from "framer-motion"
+import { ReactNode } from "react"
 
-export function HeroAnimation() {
+interface HeroAnimationProps {
+  children: ReactNode
+}
+
+export function HeroAnimation({ children }: HeroAnimationProps) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -10,6 +15,7 @@ export function HeroAnimation() {
       transition={{ duration: 0.5 }}
       className="contents" // This ensures the div doesn't affect layout
     >
+      {children}
       <style jsx global>{`
         .animate-pulse-subtle {
           animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
